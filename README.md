@@ -82,3 +82,38 @@ except ValueError:
     print("Debe ingresar números enteros separados por ','")
 ```
 Si la lista está vacía no se podrá usar el método split(), con la exepción se omite el proceso de calcular la mayor suma de consecutivos.
+
+# Shapes
+
+```python
+def __compute_slope(self):
+    try:
+        return (self.start.y - self.end.y)/ (self.start.x - self.end.x)
+    except ZeroDivisionError:
+        return None
+```
+No será posible calcular la pendiente si la línea está totalemnte vertical, matematicamente resultará en una división entre cero, si esto ocurre se retorna el valor None.
+
+```python
+def __calculate_cut_y(self):
+    try:
+        return self.start.y - self.slope * self.start.x
+    except TypeError:
+        return None
+```
+En caso de que la pendiente haya resultado en None, no se puede calcular un corte en el eje 'y ya que puede resultar en no tener corte o que toda la línea su ubique en el eje 'y'
+
+```python
+try:
+    #Código...
+except ValueError:
+    print("Try again")
+    return inicio()
+```
+En la función inicio() donde apartir de las respuestas del usuario se crea la figura, un input incorrecto puede detener el programa, al usar la excepción, se vuelve a ingresar a la función inicio() para que se reinicie el proceso de crear una figura.
+
+```python
+except Exception as e:
+    print(e, "Error when trying to execute selection")
+```
+Al ejecutar algun comando relacionado a la figura, es posible que surja un error, en ese caso el error se captura y el programa continúa.
